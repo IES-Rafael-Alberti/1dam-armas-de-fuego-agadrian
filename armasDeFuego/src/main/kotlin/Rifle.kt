@@ -10,5 +10,5 @@ class Rifle(nombre: String, municion:Int, tipoDeMunicion: String,
 
     override val danio: Int = 0
 
-    override val radio: TipoRadio = TipoRadio.Intermedio 
+    override val radio: TipoRadio = TipoRadio.Intermedio
 }
