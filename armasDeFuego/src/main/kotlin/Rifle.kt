@@ -1,14 +1,21 @@
-class Rifle(nombre: String, municion:Int, tipoDeMunicion: String,
-): ArmaDeFuego(nombre, municion, tipoDeMunicion){
+/**
+ * Clase que representa un rifle, un tipo específico de arma de fuego. Por defecto tiene el nombre de Rifle asignado
+ * @property municion La cantidad de munición del rifle.
+ * @property tipoDeMunicion El tipo de munición que utiliza el rifle.
+ */
+class Rifle(municion:Int, tipoDeMunicion: String,
+): ArmaDeFuego("Rifle", municion, tipoDeMunicion){
 
-
-    init {
-        municionARestar = 2
-        danio: Int = 0
-        require(danio in 5..10) {"El daño debe estar entre 5-10"}
-    }
-
-    override val danio: Int = 0
+    override var danio: Int = (5..10).random()
+        set(value) {
+            require(value in 1..5) {"Daño debe ser 5-10"}
+            field = value
+        }
 
     override val radio: TipoRadio = TipoRadio.Intermedio
+
+    // Establecemos cuanta municion gasta el rifle por disparo
+    init {
+        municionARestar = 2
+    }
 }
