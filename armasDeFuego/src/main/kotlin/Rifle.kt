@@ -1,3 +1,5 @@
+import kotlin.random.Random
+
 /**
  * Clase que representa un rifle, un tipo específico de arma de fuego. Por defecto tiene el nombre de Rifle asignado
  * @property municion La cantidad de munición del rifle.
@@ -12,7 +14,12 @@ class Rifle(municion:Int, tipoDeMunicion: String,
             field = value
         }
 
-    override val radio: TipoRadio = TipoRadio.Intermedio
+    // Asignamos aleatoriamente entre dos valores de la enumClass
+    override val radio: TipoRadio
+        get() = when (Random.nextInt(2)){
+            0 -> TipoRadio.Corto
+            else -> TipoRadio.Intermedio
+        }
 
     // Establecemos cuanta municion gasta el rifle por disparo
     init {
