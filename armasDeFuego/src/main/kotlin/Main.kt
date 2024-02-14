@@ -1,9 +1,15 @@
 
 fun main(args: Array<String>) {
 
-    val pistola = Pistola(8, "9mm")
-    val rifle = Rifle(12, "7.62mm")
-    val bazooka = Bazooka( 4, "RPG")
+
+    /*************
+     ** PARTE 1 **
+    *************/
+
+    /*
+    val pistola = Pistola(12, "9mm")
+    val rifle = Rifle(25, "7.62mm")
+    val bazooka = Bazooka( 6, "RPG")
 
     val armas: MutableList<ArmaDeFuego> = mutableListOf(pistola, rifle, bazooka)
 
@@ -13,10 +19,10 @@ fun main(args: Array<String>) {
     val disparos = (1..12).map { armas.random() to (1..3).random() }
 
 
-    var cont = 1
+    var cont1 = 1
     for (disparo in disparos){
-        println("*** Disparo: $cont")
-        cont++
+        println("*** Disparo: $cont1")
+        cont1++
         // Desestructuramos y separamos en dos variables, una con el arma de fuego completa, y otra con el num de disparos
         val (arma, cantDisparos) = disparo
 
@@ -28,9 +34,46 @@ fun main(args: Array<String>) {
         }
     }
 
+    */
 
+    /*************
+     ** PARTE 2 **
+     *************/
 
+    val pistola = Pistola(12, "9mm")
+    val rifle = Rifle(25, "7.62mm")
+    val bazooka = Bazooka( 6, "RPG")
 
+    val coche = Coche()
+    val casa = Casa()
+    val bocadillo = Bocadillo()
 
+    val objetos = mutableListOf(pistola, rifle, bazooka, coche, casa, bocadillo)
+
+    val disparos2 = (1..9).map { objetos.random() to (1..3).random()}
+
+    var cont2 = 1
+    for (disparo in disparos2) {
+        println("*** Disparo: $cont2")
+        cont2++
+        // Desestructuramos y separamos en dos variables, una con el objeto a disparar, y otra con el num de disparos
+        val (objeto, cantDisparos) = disparo
+
+        for (i in 1..cantDisparos) {
+            when (objeto){
+                is ArmaDeFuego -> {
+                    objeto.dispara()
+                    println(objeto.toString())
+                    println("MUNICION EXTRA ACTUAL: ${ArmaDeFuego.cantidadMunicionExtra}")
+                    println()
+                }
+
+                is RealizarDisparos -> {
+                    println(objeto.disparar())
+                    println()
+                }
+            }
+        }
+    }
 
 }

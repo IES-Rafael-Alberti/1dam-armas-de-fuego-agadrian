@@ -4,7 +4,7 @@
  * @property municion La cantidad de munición actual del arma.
  * @property tipoDeMunicion El tipo de munición del arma.
  */
-abstract class ArmaDeFuego( val nombre: String, private var municion: Int,  private val tipoDeMunicion: String) {
+abstract class ArmaDeFuego(private val nombre: String, private var municion: Int, private val tipoDeMunicion: String) {
 
     companion object{
         var cantidadMunicionExtra = (5..15).random()
